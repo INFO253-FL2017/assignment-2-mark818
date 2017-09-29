@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>comment</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	</head>
+	<body>
+		<div id="old-posts"></div>
+		<form onsubmit="return false">
+			<label>Name</label><br>
+			<input id='name' type="text" placeholder="Name" style="size: 100px"><br><br>
+			<label>Comment</label><br>
+			<textarea id='comment' placeholder="I think this article is great!"></textarea><br><br>
+			
+			<input id='subm' type="submit" onclick="post()">
+		</form>
+		<script src="/static/js/comment.js"></script>
+	</body>
+</html>

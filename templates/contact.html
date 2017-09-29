@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Contact Us</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+		<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+		<script src="/static/js/contact.js"></script>
+	</head>
+	<body>
+		<header>
+		<div class="title-bar">
+			<p id="guard" class="title-element" style="margin-left: 26%"><a href="index">Home</a></p>
+			<p class="title-element"><a href="/about">About Us</a></p>
+			<p class="title-element"><a href="/contact">Contact Us</a></p>
+		</div>
+		</header>
+		<img class="bg" src="/static/img/bg.jpg" alt="Cannot show image"/>
+		<p id="pop" hidden style="background-color:rgba(255, 255, 255, 0.8); border-radius: 10px; padding: 10px; margin-left: 30%; margin-right: 30%; margin-top: 100px;"></p>
+		<div class="content" style="width: 50%; margin-left: 25%; margin-top: 100px;">
+		  	<form onsubmit="return false">
+		  		<label>Name</label><br>
+		  		<input id='name' type="text" placeholder="John Smith" style="size: 100px"><br><br>
+				<label>Email</label><br>
+				<input id='email' type="text" placeholder="example@example.com"><br><br>
+		  		<label>Subject</label><br>
+		  		<input id='subject' type="text" placeholder="Subject"><br><br>
+		  		<label>Message</label><br>
+		  		<textarea id='msg' placeholder="Message"></textarea><br><br>
+		  		
+				<input id='subm' type="submit" onclick="send()">
+	  		</form>
+  		</div>
+		<footer style="position:fixed; bottom: 0; width: 100%">
+			<p id="guard" class="footer-element"><a href="/index">Home</a></p>
+			<p class="footer-element"><a href="/about">About Us</a></p>
+			<p class="footer-element"><a href="/contact">Contact Us</a></p>
+		</footer>
+	</body>
+</html>

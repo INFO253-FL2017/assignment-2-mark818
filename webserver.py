@@ -37,16 +37,17 @@ def weather():
 def comment():
 	return render_template("comment.html")
 
-USER  = environ['INFO253_MAILGUN_USER']
-PASS  = environ['INFO253_MAILGUN_PASSWORD']
+USER  = environ['INFO253_MAILGUN_USER'] #api
+PASS  = environ['INFO253_MAILGUN_PASSWORD'] #key-697199aacc92d66f417c9f41deef6cff
 EFROM = environ['INFO253_MAILGUN_FROM_EMAIL']
 ETO   = environ['INFO253_MAILGUN_TO_EMAIL']
+URL   = environ['INFO253_MAILGUN_DOMAIN'] #"https://api.mailgun.net/v3/sandbox3a8ff3143b3b4e5aaee4908fcb65e1e3.mailgun.org/messages"
 
 @app.route('/f', methods=['POST'])
 def form():
 	data = json.loads(request.data.decode('ascii'))
 	r=requests.post(
-        "https://api.mailgun.net/v3/sandbox3a8ff3143b3b4e5aaee4908fcb65e1e3.mailgun.org/messages",
+        URL,
         auth=(USER, PASS),
         data={"from": data['name'] + " " + EFROM,
               "to": ETO,

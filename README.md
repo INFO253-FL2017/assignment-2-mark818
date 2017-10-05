@@ -82,6 +82,8 @@ how to use it: [Mailgun API Referefence](https://documentation.mailgun.com/api-s
 **Note:** this must be implemented by using the [requests](http://docs.python-requests.org/en/master/) Python module that 
 is already included in this project. You are not allowed to find another module that integrates Mailgun with Flask
 
+**Note:** for the free tier of mailgun you can send emails to the email address you have registered. Be sure to test sending emails to the email address where you created an account
+
 **Note:** your integration with Mailgun needs to be externally configruable. This means that you cannot add your username,
 password, nor recipient directly into the code. It is a security risk to check in passwords directly into code. You must use environment variables in order to achieve this result.
 
@@ -90,6 +92,7 @@ Please use the following environment variables to retrieve from your server the 
 - INFO253_MAILGUN_PASSWORD -> your password (your api key)
 - INFO253_MAILGUN_FROM_EMAIL -> the email where you are sending this email from. You can use the mailgun provided one, or any email you choose
 - INFO253_MAILGUN_TO_EMAIL -> the email where you are sending this email to
+- INFO253_MAILGUN_DOMAIN -> your sandbox domain that mailgun assigned to you when you signed up. Should look something like this: sandbox9d95d40e03da4f6b949e22a5b6259f26.mailgun.org
 
 Before you run your server to test, be sure to run the following commands to set your environment variables in your vagrant box:
 
@@ -97,12 +100,13 @@ Before you run your server to test, be sure to run the following commands to set
 - export INFO253_MAILGUN_PASSWORD=*"[your api key]"*
 - export INFO253_MAILGUN_FROM_EMAIL=*"[your from email address]"*
 - export INFO253_MAILGUN_TO_EMAIL=*"[the email address you are sending this email to]"*
+- export INFO253_MAILGUN_DOMAIN=*"[your mailgun sandbox domain]"*
 
 Executing the above commands will ensure that these variables are avaiable to your flask application when it is loaded. If you are curious if you did it right, run the following command:
 
 ```echo $INFO253_MAILGUN_USER```
 
-To see if the INFO253_MAILGUN_USER environment variable was properly set
+To see if the INFO253_MAILGUN_USER environment variable was properly set.
 
 ### Here are the requirements for the contact form:
 

@@ -12,13 +12,14 @@ You will need to do the following:
 
 ### Install Python 3 to your vagrant box (if you haven't alreaady)
 
-1. Download miniconda for Linux. Download the right Linux installer (32 bit or 64 bit, depending on your system) and 
+1. Download [miniconda](https://conda.io/miniconda.html) for Linux. Download the right Linux installer (32 bit or 64 bit, depending on your system) and 
 save that file in the i253 folder
 2. Load up your vagrant box and run the 
  - ```bash Miniconda3-latest-Linux-x86_64.sh``` for 64 bit
- - ```bash Miniconda3-latest-Linux-x86.sh``` for 32 
+ - ```bash Miniconda3-latest-Linux-x86.sh``` for 32 bit
 3. Be sure to type "yes" when asked this question;
  - Do you wish the installer to prepend the Miniconda3 install location to PATH in your /home/vagrant/.bashrc ? [yes|no]
+4. Close out of your vagrant box and enter it again
 
 Now you should be able to type python3 --version and it should specify that you are running python 3.6
 
@@ -26,12 +27,13 @@ Now you should be able to type python3 --version and it should specify that you 
 
 1. Open the file "Vagrantfile" located in your i253 folder with a text editor
 2. At the second line from the end (before the word "end") add the following code:
- - ``` 
+   ``` 
     for i in 5000..5010
         config.vm.network :forwarded_port, guest: i, host: i
     end
     ```
-3. Now ports 5000 through 5010 are availiable on your host computer by going to your browser and going to
+3. Run ```vagrant reload```
+4. Now ports 5000 through 5010 are availiable on your host computer by going to your browser and going to
 http://localhost:5000, http://localhost:5001, and so on to http://localhost:5010
 
 ### Clone your repo and run your server
@@ -81,7 +83,26 @@ how to use it: [Mailgun API Referefence](https://documentation.mailgun.com/api-s
 is already included in this project. You are not allowed to find another module that integrates Mailgun with Flask
 
 **Note:** your integration with Mailgun needs to be externally configruable. This means that you cannot add your username,
-password, nor recipient directly into the code. It is a security risk to check in passwords directly into code. You must use environment variables in order to achieve this result. 
+password, nor recipient directly into the code. It is a security risk to check in passwords directly into code. You must use environment variables in order to achieve this result.
+
+Please use the following environment variables to retrieve from your server the followign information to send an email externally:
+- INFO253_MAILGUN_USER -> your username ("api")
+- INFO253_MAILGUN_PASSWORD -> your password (your api key)
+- INFO253_MAILGUN_FROM_EMAIL -> the email where you are sending this email from. You can use the mailgun provided one, or any email you choose
+- INFO253_MAILGUN_TO_EMAIL -> the email where you are sending this email to
+
+Before you run your server to test, be sure to run the following commands to set your environment variables in your vagrant box:
+
+- export INFO253_MAILGUN_USER="api"
+- export INFO253_MAILGUN_PASSWORD=*"[your api key]"*
+- export INFO253_MAILGUN_FROM_EMAIL=*"[your from email address]"*
+- export INFO253_MAILGUN_TO_EMAIL=*"[the email address you are sending this email to]"*
+
+Executing the above commands will ensure that these variables are avaiable to your flask application when it is loaded. If you are curious if you did it right, run the following command:
+
+```echo $INFO253_MAILGUN_USER```
+
+To see if the INFO253_MAILGUN_USER environment variable was properly set
 
 ### Here are the requirements for the contact form:
 

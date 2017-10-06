@@ -54,7 +54,6 @@ def form():
               "subject": data['subject'],
               "text": data['msg'] +
                      '\n Please reply to ' + data['email'] + ' directly.'})
-	print(r.json())
 	return ('', 204)
 
 @app.route('/')

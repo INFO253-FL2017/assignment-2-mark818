@@ -24,10 +24,10 @@ function send() {
         pop.style.color = "red";
         pop.innerHTML = "Fields " + missing.substr(0, missing.length-1) + " need to be filled out";
     } else {
-        pop.style.color = "green";
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 204) {
+                pop.style.color = "green";
                 pop.innerHTML = "Hi " + first + ", your message has been sent";
             }
         };

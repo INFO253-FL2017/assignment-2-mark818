@@ -47,7 +47,7 @@ URL   = environ['INFO253_MAILGUN_DOMAIN'] #"https://api.mailgun.net/v3/sandbox3a
 def form():
 	data = json.loads(request.data.decode('ascii'))
 	r=requests.post(
-        URL,
+        'https://api.mailgun.net/v3/{}/messages'.format(URL),
         auth=(USER, PASS),
         data={"from": data['name'] + " " + EFROM,
               "to": ETO,
